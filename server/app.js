@@ -78,7 +78,7 @@ io.on('connection', function(socket){
     
     logIO('New client connected: ' + socket.id);
 
-    socket.emit('connect', {boardSize: 12});    
+    socket.emit('login', {boardSize: 12});    
 });
     
 function logIO(logString) {
