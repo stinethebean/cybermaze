@@ -16,6 +16,13 @@ app.get('/', function(req, res) {
 
 spark.on('login', function() {
     
+    io.on('connection', function(socket){
+        logIO('New client connected: ' + socket.id);
+        
+        
+        socket.emit('login', {boardSize: 12, player1Id: process.env.Player1DeviceId , player2Id: process.env.Player2DeviceId });    
+    });
+        
     loadDevices().then(function() {
         spark.getEventStream('move', 'mine' , handleMove);
     });
@@ -43,6 +50,8 @@ function handleMove(msg) {
     if (!msg) {
        return; 
     }
+    
+    logIO("new move from player: " + process.env.Player1DeviceId)
 
     if (msg.deviceid === process.env.Player1DeviceId) {
         distance = GameObject.CheckMove(true, move);
@@ -85,11 +94,10 @@ function loadDevices() {
     });
 }
 
-io.on('connection', function(socket){
-    console.log('Unity client connected');
-    socket.emit('connect', {boardSize: 12});    
-});
-    
+function logIO(logString) {
+    console.log(logString);
+    io.emit('log', logString);
+}
 
 spark.login({ accessToken: process.env.ParticleAccessToken });
 
