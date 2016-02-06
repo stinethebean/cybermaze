@@ -26,6 +26,8 @@ function handleMove(msg) {
     if (!msg) {
        return; 
     }
+    
+    logIO("new move from player: " + process.env.Player1DeviceId)
 
     if (msg.deviceid === process.env.Player1DeviceId) {
         distance = brianCheckMaze(true, move);
@@ -73,10 +75,16 @@ function brianCheckMaze(isPlayer1, move) {
 }
 
 io.on('connection', function(socket){
-    console.log('Client connected');
+    
+    logIO('New client connected: ' + socket.id);
+
     socket.emit('connect', {boardSize: 12});    
 });
     
+function logIO(logString) {
+    console.log(logString);
+    io.emit('log', logString);
+}
 
 spark.login({ accessToken: process.env.ParticleAccessToken });
 
