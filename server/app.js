@@ -17,7 +17,9 @@ spark.on('login', function() {
     
     io.on('connection', function(socket){
         logIO('New client connected: ' + socket.id);
-        socket.emit('login', {boardSize: 12, player1Id: player1Device.id , player2Id: player2Device.id });    
+        
+        
+        socket.emit('login', {boardSize: 12, player1Id: process.env.Player1DeviceId , player2Id: process.env.Player2DeviceId });    
     });
         
     loadDevices().then(function() {
