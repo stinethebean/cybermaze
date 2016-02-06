@@ -44,20 +44,20 @@ public class GameboardBehavior : MonoBehaviour
                 var leftWall = Instantiate(WallPrefab);
                 leftWall.transform.parent = tile.transform;
                 leftWall.name = string.Format("{0}_left", tile.name);
-                leftWall.transform.localPosition = new Vector3(-5.1f, -5, 0);
+                leftWall.transform.localPosition = new Vector3(-tileSpacingHalf, -5, 0);
                 leftWall.transform.eulerAngles = new Vector3(0, 90, 0);
                 
                 var topWall = Instantiate(WallPrefab);
                 topWall.transform.parent = tile.transform;
                 topWall.name = string.Format("{0}_top", tile.name);
-                topWall.transform.localPosition = new Vector3(0, -5, 5.1f);
+                topWall.transform.localPosition = new Vector3(0, -5, tileSpacingHalf);
                 
                 if (x == NumberOfTilesX - 1)
                 {
                     // create the right wall
                     var rightWall = Instantiate(WallPrefab);
                     rightWall.name = string.Format("{0}_right", tile.name);
-                    rightWall.transform.localPosition = new Vector3(5.1f, -5, 0);
+                    rightWall.transform.localPosition = new Vector3(tileSpacingHalf, -5, 0);
                     rightWall.transform.eulerAngles = new Vector3(0, 90, 0);
                     rightWall.transform.parent = tile.transform;
                 }
@@ -67,7 +67,7 @@ public class GameboardBehavior : MonoBehaviour
                     // create the bottom wall
                     var bottomWall = Instantiate(WallPrefab);
                     bottomWall.name = string.Format("{0}_bot", tile.name);
-                    topWall.transform.localPosition = new Vector3(0, -5, -5.1f);
+                    topWall.transform.localPosition = new Vector3(0, -5, -tileSpacingHalf);
                     topWall.transform.parent = tile.transform;
                 }
             }
