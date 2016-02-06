@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyber Maze.CSharp.Plugins", "Cyber Maze.CSharp.Plugins.csproj", "{B3E04BA4-4770-8DE5-0AC1-4BDC85D77FF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyber Maze.CSharp", "Cyber Maze.CSharp.csproj", "{55698A5F-FBC8-4469-FB49-1D466C0F2C4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyber Maze.CSharp.Editor", "Cyber Maze.CSharp.Editor.csproj", "{0A23F8FA-3653-0855-1274-D56FBD41D257}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3E04BA4-4770-8DE5-0AC1-4BDC85D77FF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3E04BA4-4770-8DE5-0AC1-4BDC85D77FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3E04BA4-4770-8DE5-0AC1-4BDC85D77FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3E04BA4-4770-8DE5-0AC1-4BDC85D77FF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55698A5F-FBC8-4469-FB49-1D466C0F2C4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55698A5F-FBC8-4469-FB49-1D466C0F2C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55698A5F-FBC8-4469-FB49-1D466C0F2C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55698A5F-FBC8-4469-FB49-1D466C0F2C4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A23F8FA-3653-0855-1274-D56FBD41D257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A23F8FA-3653-0855-1274-D56FBD41D257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A23F8FA-3653-0855-1274-D56FBD41D257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A23F8FA-3653-0855-1274-D56FBD41D257}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
