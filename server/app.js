@@ -16,17 +16,17 @@ app.get('/', function(req, res) {
 
 spark.on('login', function() {
     
-    io.on('connection', function(socket){
+    loadDevices().then(function() {
+        spark.getEventStream('move', 'mine' , handleMove);
+    });
+});
+
+io.on('connection', function(socket){
         logIO('New client connected: ' + socket.id);
         
         
         socket.emit('login', {boardSize: 12, player1Id: process.env.Player1DeviceId , player2Id: process.env.Player2DeviceId });    
     });
-        
-    loadDevices().then(function() {
-        spark.getEventStream('move', 'mine' , handleMove);
-    });
-});
 
 var GameObject = function() {
     var _self = this;
@@ -96,7 +96,7 @@ function loadDevices() {
 
 function logIO(logString) {
     console.log(logString);
-    io.emit('log', logString);
+   // io.emit('log', logString);
 }
 
 spark.login({ accessToken: process.env.ParticleAccessToken });
