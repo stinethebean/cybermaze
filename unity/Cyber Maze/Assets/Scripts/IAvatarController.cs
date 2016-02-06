@@ -8,8 +8,6 @@ namespace Assets.Scripts
 {
     public interface IAvatarController
     {
-        void MoveToTile(Transform targeTransform);
-        int TileX { get; set; }
-        int TileY { get; set; }
+        void HandleMove(Vector3 targetPos, int tileMoveCount);
     }
 }

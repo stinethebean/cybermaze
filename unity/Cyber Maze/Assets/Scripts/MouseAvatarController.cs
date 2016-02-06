@@ -14,12 +14,9 @@ public class MouseAvatarController : MonoBehaviour, IAvatarController {
 	
 	}
 
-    public void MoveToTile(Transform targeTransform)
+    public void HandleMove(Vector3 targetPos, int tileMoveCount)
     {
-        throw new System.NotImplementedException();
+        iTween.LookTo(gameObject, targetPos, 0.1f);
+        iTween.MoveTo(gameObject, targetPos, 0.1f);
     }
-
-    public int TileX { get; set; }
-
-    public int TileY { get; set; }
 }

@@ -14,12 +14,10 @@ public class CatAvatarController : MonoBehaviour, IAvatarController {
 	
 	}
 
-    public void MoveToTile(Transform targeTransform)
+    public void HandleMove(Vector3 targetPos, int tileMoveCount)
     {
-        
+        // for the cat, we need to face the cat towards the tile we're moving to
+        iTween.LookTo(gameObject, targetPos, 0.4f);
+        iTween.MoveTo(gameObject, targetPos, tileMoveCount * 1f);
     }
-
-    public int TileX { get; set; }
-
-    public int TileY { get; set; }
 }
