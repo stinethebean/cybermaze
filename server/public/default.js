@@ -9,7 +9,7 @@ window.onload = function () {
       });
 
     socket.on('login', function(msg) {
-        logText.innerHTML += "Board Size: " + msg + "\n";
+        logText.innerHTML += "Board Size: " + msg.boardSize + "\n";
     })
         
 
