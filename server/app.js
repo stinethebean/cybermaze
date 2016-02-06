@@ -15,6 +15,11 @@ app.get('/', function(req, res) {
 
 spark.on('login', function() {
     
+    io.on('connection', function(socket){
+        logIO('New client connected: ' + socket.id);
+        socket.emit('login', {boardSize: 12, player1Id: player1Device.id , player2Id: player2Device.id });    
+    });
+        
     loadDevices().then(function() {
         spark.getEventStream('move', 'mine' , handleMove);
     });
@@ -74,13 +79,6 @@ function brianCheckMaze(isPlayer1, move) {
     return 5;
 }
 
-io.on('connection', function(socket){
-    
-    logIO('New client connected: ' + socket.id);
-
-    socket.emit('login', {boardSize: 12});    
-});
-    
 function logIO(logString) {
     console.log(logString);
     io.emit('log', logString);
