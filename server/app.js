@@ -1,3 +1,4 @@
+var generator = require("./maze");
 var express = require('express');
 var app = express();
 app.use(express.static('public')); 
@@ -20,6 +21,22 @@ spark.on('login', function() {
     });
 });
 
+var GameObject = function() {
+    var _self = this;
+    var width = 8;
+    var height = 8;
+    _self.Maze = generator(width, height);
+    _self.Player1Position = [0,0];
+    _self.Player2Position = [width - 1, height - 1];
+    _self.Player1Turn = true;
+    
+    _self.CheckMove = function(Player1Move, direction) {
+        if (_self.Player1Turn != Player1Move) { return; } // it's not your turn
+        return 5;
+    }   
+    
+}
+
 function handleMove(msg) {
     var distance = -1;
   
@@ -28,14 +45,14 @@ function handleMove(msg) {
     }
 
     if (msg.deviceid === process.env.Player1DeviceId) {
-        distance = brianCheckMaze(true, move);
+        distance = GameObject.CheckMove(true, move);
         
         player1Device.callFunction("moveResult", distance);
         player2Device.callFunction("yourMove", distance);
         io.emit("move", {move: move, player: msg.deviceid });
         
     } else if (msg.deviceid === process.env.Player2DeviceId) {
-        distance = brianCheckMaze(false, move);
+        distance = GameObject.CheckMove(false, move);
         
         player1Device.callFunction("moveResult", distance);
         player2Device.callFunction("yourMove", distance);
@@ -66,10 +83,6 @@ function loadDevices() {
             });  
         });
     });
-}
-
-function brianCheckMaze(isPlayer1, move) {
-    return 5;
 }
 
 io.on('connection', function(socket){

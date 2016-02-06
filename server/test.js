@@ -1,4 +1,5 @@
 var generator = require("./maze");
-var maze = new generator(12, 12);
+var maze = generator(8, 8);
 maze.print();
-maze.IsWall(2,2,2);
+var text = JSON.stringify(maze.GetMap());
+console.log(text);

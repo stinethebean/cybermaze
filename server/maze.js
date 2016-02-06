@@ -179,6 +179,10 @@ function Maze(rows, columns) {
             console.log(str);
         }
     }
+    
+    _self.GetMap = function() {
+        return _self.map;
+    }
 
     _self.initialize();
     _self.construct();
@@ -188,6 +192,7 @@ var Generator = function MazeGen(height, width) {
     var maze = new Maze(height, width);
     module.exports.print = maze.print;
     module.exports.IsWall = maze.IsWall;
+    module.exports.GetMap = maze.GetMap;
     return maze;
 }
 
