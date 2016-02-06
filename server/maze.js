@@ -161,6 +161,10 @@ function Maze(rows, columns) {
         }
 
     }
+    
+    _self.IsWall = function(x, y, direction) {
+        return _self.map[y][x].walls[direction];
+    }
 
     // prints maze using console.log
     _self.print = function() {
@@ -183,6 +187,7 @@ function Maze(rows, columns) {
 var Generator = function MazeGen(height, width) {
     var maze = new Maze(height, width);
     module.exports.print = maze.print;
+    module.exports.IsWall = maze.IsWall;
     return maze;
 }
 
