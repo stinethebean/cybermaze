@@ -9,30 +9,47 @@ var port = process.env.PORT || 3000;
 
 var player1Device;
 var player2Device;
-5
-// app.get('/', function(req, res) {
-//  res.sendFile(__dirname + '/public/default.html');
-// });
-// 
-// spark.on('login', function() {
-//     
-//     io.on('connection', function(socket){
-//         logIO('New client connected: ' + socket.id);
-//         
-//         
-//         socket.emit('login', {boardSize: 12, player1Id: process.env.Player1DeviceId , player2Id: process.env.Player2DeviceId });    
-//     });
-//         
-//     loadDevices().then(function() {
-//         spark.getEventStream('move', 'mine' , handleMove);
-//     });
-// });
+
+app.get('/', function(req, res) {
+ res.sendFile(__dirname + '/public/default.html');
+});
+
+spark.on('login', function() {
+    
+    io.on('connection', function(socket){
+        logIO('New client connected: ' + socket.id);
+        
+        
+        socket.emit('login', {boardSize: 12, player1Id: process.env.Player1DeviceId , player2Id: process.env.Player2DeviceId });    
+    });
+        
+    loadDevices().then(function() {
+        spark.getEventStream('move', 'mine' , handleMove);
+    });
+});
+
+app.get('/', function(req, res) {
+ res.sendFile(__dirname + '/public/default.html');
+});
+
+spark.on('login', function() {
+    
+    loadDevices().then(function() {
+        spark.getEventStream('move', 'mine' , handleMove);
+    });
+});
+
+io.on('connection', function(socket){
+        logIO('New client connected: ' + socket.id);
+        
+        
+        socket.emit('login', {boardSize: 12, player1Id: process.env.Player1DeviceId , player2Id: process.env.Player2DeviceId });    
+    });
 
 var Player = function() {
     var _self = this;
     _self.Position = []
 }
-
 var GameObject = function() {
     var _self = this;
     var width = 8;
@@ -145,7 +162,7 @@ function loadDevices() {
 
 function logIO(logString) {
     console.log(logString);
-    io.emit('log', logString);
+   // io.emit('log', logString);
 }
 
 //spark.login({ accessToken: process.env.ParticleAccessToken });
