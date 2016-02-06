@@ -1,5 +1,4 @@
 var generator = require("./maze");
-var maze = new generator(15, 15);
+var maze = new generator(12, 12);
 maze.print();
-maze = new generator(12, 9);
-maze.print();
+maze.IsWall(2,2,2);
