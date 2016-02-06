@@ -73,7 +73,7 @@ function brianCheckMaze(isPlayer1, move) {
 }
 
 io.on('connection', function(socket){
-    console.log('Unity client connected');
+    console.log('Client connected');
     socket.emit('connect', {boardSize: 12});    
 });
     
