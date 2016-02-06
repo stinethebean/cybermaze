@@ -72,8 +72,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\GameboardBehavior.cs" />
-    <Compile Include="Assets\TileBehavior.cs" />
+    <Compile Include="Assets\Scripts\GameboardBehavior.cs" />
+    <Compile Include="Assets\Scripts\TileBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Kitten\Shaders\Alpha-Diffuse.shader" />
