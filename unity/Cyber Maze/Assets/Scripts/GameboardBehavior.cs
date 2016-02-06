@@ -3,10 +3,13 @@ using System.Collections;
 
 public class GameboardBehavior : MonoBehaviour
 {
+    public GameObject CatPrefab;
+    public GameObject MousePrefab;
     public GameObject TilePrefab;
+    public GameObject WallPrefab;
     public int NumberOfTilesX;
     public int NumberOfTilesY;
-    public int TileSpacing;
+    public float TileSpacing;
 
     private GameObject[] _tiles;
 
@@ -19,12 +22,13 @@ public class GameboardBehavior : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
     void CreateGameboard()
     {
         var totalTiles = NumberOfTilesX*NumberOfTilesY;
+        var tileSpacingHalf = TileSpacing/2f;
 
         _tiles = new GameObject[totalTiles];
 
@@ -34,10 +38,39 @@ public class GameboardBehavior : MonoBehaviour
             {
                 var tile = Instantiate(TilePrefab);
                 tile.name = string.Format("tile_{0}_{1}", x, y);
-                tile.transform.position = new Vector3(x * 10, 0, y * 10);
+                tile.transform.position = new Vector3(x * TileSpacing, 0, y * -TileSpacing);
                 tile.transform.parent = transform;
-            }
 
+                var leftWall = Instantiate(WallPrefab);
+                leftWall.transform.parent = tile.transform;
+                leftWall.name = string.Format("{0}_left", tile.name);
+                leftWall.transform.localPosition = new Vector3(-5.1f, -5, 0);
+                leftWall.transform.eulerAngles = new Vector3(0, 90, 0);
+                
+                var topWall = Instantiate(WallPrefab);
+                topWall.transform.parent = tile.transform;
+                topWall.name = string.Format("{0}_top", tile.name);
+                topWall.transform.localPosition = new Vector3(0, -5, 5.1f);
+                
+                if (x == NumberOfTilesX - 1)
+                {
+                    // create the right wall
+                    var rightWall = Instantiate(WallPrefab);
+                    rightWall.name = string.Format("{0}_right", tile.name);
+                    rightWall.transform.localPosition = new Vector3(5.1f, -5, 0);
+                    rightWall.transform.eulerAngles = new Vector3(0, 90, 0);
+                    rightWall.transform.parent = tile.transform;
+                }
+
+                if (y == NumberOfTilesY - 1)
+                {
+                    // create the bottom wall
+                    var bottomWall = Instantiate(WallPrefab);
+                    bottomWall.name = string.Format("{0}_bot", tile.name);
+                    topWall.transform.localPosition = new Vector3(0, -5, -5.1f);
+                    topWall.transform.parent = tile.transform;
+                }
+            }
         }
     }
 
@@ -46,6 +79,6 @@ public class GameboardBehavior : MonoBehaviour
         var camera = Camera.main;
         camera.orthographicSize = (NumberOfTilesY* TileSpacing) /2f;
         var tileHalfSize = (TileSpacing/2);
-        camera.transform.position = new Vector3(((NumberOfTilesX * TileSpacing) / 2f) - tileHalfSize, 10f, ((NumberOfTilesY * TileSpacing) / 2f) - tileHalfSize);
+        camera.transform.position = new Vector3(((NumberOfTilesX * TileSpacing) / 2f) - tileHalfSize, 10f, -(((NumberOfTilesY * TileSpacing) / 2f) - tileHalfSize));
     }
 }

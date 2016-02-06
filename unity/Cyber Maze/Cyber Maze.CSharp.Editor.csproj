@@ -124,6 +124,7 @@
   <ItemGroup>
     <None Include="Assets\Kitten\Shaders\Alpha-Diffuse.shader" />
     <None Include="Assets\Kitten\Shaders\Normal-Diffuse.shader" />
+    <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />

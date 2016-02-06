@@ -72,12 +72,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CatAvatarController.cs" />
     <Compile Include="Assets\Scripts\GameboardBehavior.cs" />
+    <Compile Include="Assets\Scripts\IAvatarController.cs" />
+    <Compile Include="Assets\Scripts\MouseAvatarController.cs" />
+    <Compile Include="Assets\Scripts\ShowWallBehavior.cs" />
     <Compile Include="Assets\Scripts\TileBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Kitten\Shaders\Alpha-Diffuse.shader" />
     <None Include="Assets\Kitten\Shaders\Normal-Diffuse.shader" />
+    <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
