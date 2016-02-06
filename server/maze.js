@@ -180,6 +180,10 @@ function Maze(rows, columns) {
     _self.construct();
 }
 
-// generate a 32x32 maze and print it
-var myAmazingMaze = new Maze(12,12);
-myAmazingMaze.print();
+var Generator = function MazeGen(height, width) {
+    var maze = new Maze(height, width);
+    module.exports.print = maze.print;
+    return maze;
+}
+
+module.exports = Generator;
